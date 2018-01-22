@@ -34,6 +34,18 @@
   top:10px;
 }
 
+.btn:hover{
+  background:#f4a688;  
+  cursor: pointer;
+}
+
+.operator{
+  width:60px;
+  height:50px;
+  /*background:#b7d7e8; */
+  background: #8d9db6;
+}
+
 .leftbtn{
   margin-left:15px
 }
