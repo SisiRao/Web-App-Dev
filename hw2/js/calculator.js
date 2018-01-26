@@ -37,6 +37,7 @@ window.onload = function(){
 	for(var i = 0; i < operelems.length; i++ ) 
 	{
 		operelems[i].addEventListener("click",function(){
+			var flag = false;
 			if(prevInputIsNum)
 			{
 				switch(prev_oper){
@@ -53,7 +54,16 @@ window.onload = function(){
 						break;
 
 					case '/':
-						prev_value = Math.floor(prev_value / new_val);
+						if(new_val == 0)
+						{
+							alert("Can't divide by 0!");
+							new_val = 0;
+							prev_value = 0;
+					    	prev_oper = '+';
+					    	flag = true;
+						}
+						else
+							prev_value = Math.floor(prev_value / new_val);
 						break;
 
 					case '=':
@@ -66,7 +76,10 @@ window.onload = function(){
 				}
 			}
 			//update value
-			prev_oper = this.value;
+			if(!flag)
+			{
+				prev_oper = this.value;
+			}
 			result.innerHTML = prev_value;
 			prevInputIsNum = false;
 			
