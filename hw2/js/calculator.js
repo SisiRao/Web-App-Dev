@@ -1,12 +1,14 @@
 
 window.onload = function(){
 
+	//initialize vars
 	var prevInputIsNum = false
 	var new_val = 0, 
 		prev_value = 0,
-    prev_oper = '+';
+    	prev_oper = '+';
 	var result = document.getElementById("result");
 	var numelems = document.querySelectorAll(".number");
+
 	//add onClick event to all number buttons
 	for(var i = 0; i < numelems.length; i++ ) 
 	{
@@ -20,6 +22,16 @@ window.onload = function(){
 		});
 	}
 	
+	//add onClick event to clear buttons
+	var clearbtn = document.querySelector(".clear")
+	clearbtn.onclick = function(){
+		new_val = 0;
+		prev_value = 0;
+    	prev_oper = '+';
+    	prevInputIsNum = false;
+    	result.innerHTML = new_val;
+	}
+
 	//add onClick event to all operator buttons
 	var operelems = document.querySelectorAll(".operator")
 	for(var i = 0; i < operelems.length; i++ ) 
