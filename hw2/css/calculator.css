@@ -23,8 +23,6 @@
 .btn{
   width:60px;
   height:50px;
-  background:#87bdd8;  
-  color:white;
   font-size:20px;
   font-family: sans-serif;
   margin-left:5px;
@@ -32,6 +30,11 @@
   margin-bottom: 10px;
   position: relative;
   top:10px;
+}
+
+.number{
+  background:#87bdd8;  
+  color:white;
 }
 
 .btn:hover{
