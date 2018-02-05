@@ -41,7 +41,7 @@ def home(request):
 		#------------processing-------------------------------
 		if 'number' in request.POST:
 			input = int(request.POST['number'])
-			if not isinstance(input, int):
+			if (input<0) or (input > 9):
 				error = "Input should be 0~9!!"
 				new_val = 0
 				prev_value = 0
@@ -117,7 +117,7 @@ def home(request):
 		context['prev_value'] = 0
 		context['prev_oper'] = '+'
         # print out error message
-        print(sys.exc_info())
+        #print(sys.exc_info())
 
 
 	return render(request, 'calculator/calculator.html', context)
