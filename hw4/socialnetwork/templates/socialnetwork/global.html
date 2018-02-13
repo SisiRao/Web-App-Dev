@@ -13,7 +13,7 @@
 {% block global-stream %}
 	<div class="post">
 	    {% load staticfiles %}	
-	    <img class="usr-img" src="{% static 'socialnetwork/blank-profile-picture.png' %}" width="10%" height="10%" />
+	    <a href="{% url 'profile' %}"><img class="usr-img" src="{% static 'socialnetwork/admin-profile-image.jpeg' %}" /></a>
 
 	    <p >Post by {{entry.created_by.first_name}} {{entry.created_by.last_name}}</p>
 	    <p>{{entry.text}} </p>

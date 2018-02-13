@@ -1,10 +1,21 @@
 {% extends "socialnetwork/base-logged-in.html" %}
 
 {% block profile %}
-    {% load staticfiles %}  
-        <img class="usr-img" src="{% static 'socialnetwork/blank-profile-picture.png' %}" width="10%" height="10%" />
-
+        <div class="profile-img">
+            {% load staticfiles %}
+            <a href="{% url 'profile' %}"><img src="{% static 'socialnetwork/admin-profile-image.jpeg' %}"/></a>
+            <form>
+            <br/>
+              <input id = "filechoser" type="file" name="pic" accept="image/*">
+              <input type="submit">
+            </form>
+        </div>
+        
         <div class='profile-info'>
+            <ul>
+                <li>Introduction: </li>
+                <li>Creator of this website</li>
+            </ul>
             <ul>
                 <li>Username: </li>
                 <li>{{username}}</li>
