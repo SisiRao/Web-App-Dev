@@ -50,5 +50,3 @@ class CreatePost(forms.Form):
 
 class CommentPost(forms.Form):
 	text = forms.CharField(disabled = True, widget=forms.Textarea)
-
-

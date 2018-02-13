@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.utils import timezone
 
-from socialnetwork.forms import RegistrationForm, CommentPost
+from socialnetwork.forms import RegistrationForm, CreatePost, CommentPost
 
 
 
@@ -74,6 +74,18 @@ def follower (request):
 	form = CommentPost(entry)
 	context = {'entry': entry, 'form:':form}
 	return render(request, 'socialnetwork/follower.html', context)
+
+
+@login_required
+def profile (request):
+    #Demonstrate a user profile
+    context={};
+    context['first_name'] = request.user.first_name;
+    context['last_name'] = request.user.last_name;
+    context['email'] = request.user.email;
+    context['username'] = request.user.username;
+
+    return render(request, 'socialnetwork/profile.html', context)
 
 
 Fist_Entry = {

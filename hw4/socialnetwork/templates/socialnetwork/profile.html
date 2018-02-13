@@ -1,0 +1,28 @@
+{% extends "socialnetwork/base-logged-in.html" %}
+
+{% block profile %}
+    {% load staticfiles %}  
+        <img class="usr-img" src="{% static 'socialnetwork/blank-profile-picture.png' %}" width="10%" height="10%" />
+
+        <div class='profile-info'>
+            <ul>
+                <li>Username: </li>
+                <li>{{username}}</li>
+            </ul>
+            <ul>
+                <li>First Name: </li>
+                <li>{{first_name}}</li>
+            </ul>
+            <ul>
+                <li>Last Name: </li>
+                <li>{{last_name}}</li>
+            </ul>
+            <ul>
+                <li>Email: </li>
+                <li>{{email}}</li>
+            </ul>
+
+        </div>
+    </form>
+{% endblock %}
+
