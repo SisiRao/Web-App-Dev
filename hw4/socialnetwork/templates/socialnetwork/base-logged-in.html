@@ -1,0 +1,46 @@
+{% extends "socialnetwork/base.html" %}
+
+{% block user-info %}
+    <form action="{% url 'logout' %}" method="get">
+	    <li><a class="nav-titile nav-right">{{user.first_name}} {{user.last_name}}</a></li>
+		<li class="dropdown">
+		    <a class="dropbtn">username = {{user.username}} ↓</a>
+		    <div class="dropdown-content">
+		      <a href="{% url 'home' %}">Global Stream</a>
+		      <a href="{% url 'follower' %}">Follower Stream</a>
+		      <a href="#">My Profile</a>
+		      <a><input class="droplink" type="submit" value="Logout" /></a>
+		    </div>
+	  	</li>
+    </form>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+	<div class = "global-stream">
+		{% block add-comment %}
+		{% endblock %}
+		
+		{% block global-stream %}
+		{% endblock %}
+	</div>
+
+	<div>
+		{% block follower-stream %}
+		{% endblock %}
+	</div>
+	<div>
+		{% block profile %}
+		{% endblock %}
+	</div>
+
+	{% if message %}
+	    <div class="message">
+	        {{message}}
+	    </div>
+	{% endif %}
+
+{% endblock %}

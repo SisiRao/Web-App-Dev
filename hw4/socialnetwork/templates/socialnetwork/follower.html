@@ -1,0 +1,25 @@
+{% extends "socialnetwork/base-logged-in.html" %}
+
+
+{% block follower-stream %}
+	<div class="post">
+	    {% load staticfiles %}	
+	    <img class="usr-img" src="{% static 'socialnetwork/blank-profile-picture.png' %}" width="10%" height="10%" />
+
+	    <p >Post by {{entry.created_by.first_name}} {{entry.created_by.last_name}}</p>
+	    <p>{{entry.text}} </p>
+	    <div class="post-info">
+	    	{{entry.update_time}} 
+	    </div>
+
+	    <div class="comment">Comment:
+	    	<textarea rows="2" cols="100" placeholder="Leave a comment here..."></textarea>
+    		<input type="submit" value="Submit">
+    </div>
+
+{% endblock %}
+
+
+
+
+
