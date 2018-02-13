@@ -1,6 +1,5 @@
-*.pyc
-
-# Editor backup files
+ 
+r backup files
 *~
 *#
 *.swp
@@ -10,3 +9,6 @@
 
 # Django's SQL Lite Database File
 db.sqlite3
+
+
+
