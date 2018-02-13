@@ -11,5 +11,3 @@ r backup files
 db.sqlite3
 
 
-
-*.pyc
