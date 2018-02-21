@@ -15,7 +15,6 @@ db.sqlite3
 *.jpg
 *.gif
 *.jpeg
-*.png
 
 # MacOS index file
 .DS_Store
