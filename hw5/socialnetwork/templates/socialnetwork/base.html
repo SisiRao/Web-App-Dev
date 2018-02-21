@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">		 
+		<title> {% block title %} Social Network {% endblock%} </title>
+	    {% load static %}
+	    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+	</head>
+
+	<body>
+		<!-- header -->
+		<div id="header">The Soial Network</div>
+		<div class="banner"></div>
+
+		<!-- container -->
+
+		<div class = "container">
+			<div class="blog-head">
+				<ul id="header-space">
+				  <li><a href="{% url 'home' %}">Home</a></li>
+				  {% block user-info %}
+					{% endblock %}
+				</ul>
+			</div>
+
+			<!-- main content -->
+			<div class="content">
+			{% block content %}
+			    {% endblock %}
+			</div>
+
+
+			<div id="footer">
+				<p>Web Application Development - Sisi Rao</p>
+				<p id="back-top"><a href="#">Back to top</a></p>
+			</div>
+		</div>
+
+	</body>
+</html>
