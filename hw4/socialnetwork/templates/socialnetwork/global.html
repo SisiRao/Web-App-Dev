@@ -1,7 +1,7 @@
 {% extends "socialnetwork/base-logged-in.html" %}
 
 {% block add-comment %}
-	<div class="create-post"> 
+	<div class="create-post">
 		<p>New Post:</p>
     	<textarea rows="5" cols="100" placeholder="Write you post here..."></textarea>
 		<input type="submit" value="Submit">
@@ -12,13 +12,13 @@
 
 {% block global-stream %}
 	<div class="post">
-	    {% load staticfiles %}	
+	    {% load staticfiles %}
 	    <a href="{% url 'profile' %}"><img class="usr-img" src="{% static 'socialnetwork/admin-profile-image.jpeg' %}" /></a>
 
 	    <p >Post by {{entry.created_by.first_name}} {{entry.created_by.last_name}}</p>
 	    <p>{{entry.text}} </p>
 	    <div class="post-info">
-	    	{{entry.update_time}} 
+	    	{{entry.update_time}}
 	    </div>
 
 	    <div class="all-comment">
@@ -33,8 +33,3 @@
 	</div>
 
 {% endblock %}
-
-
-
-
-

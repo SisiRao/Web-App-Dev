@@ -69,7 +69,7 @@ li a, .dropbtn {
     min-height: 25px;
     z-index: 1;
     text-decoration: none;
-    font-size: 15px
+    font-size: 15px;
     background-color: #fee8ea;
 }
 
@@ -196,5 +196,6 @@ img{
     padding: 5px;
 }
 
-.profile-info li{
+.profile-info li {
     margin-right: 10px;
+}
