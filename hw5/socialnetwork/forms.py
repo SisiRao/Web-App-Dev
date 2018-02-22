@@ -1,5 +1,4 @@
 from django import forms
-from django.contrib.auth.models import User
 from socialnetwork.models import *
 
 MAX_UPLOAD_SIZE = 2500000
@@ -65,11 +64,10 @@ class PostForm(forms.Form):
 
 
 class CommentPostForm(forms.Form):
-	text = forms.CharField(disabled = True, widget=forms.Textarea)
+    text = forms.CharField(disabled = True, widget=forms.Textarea)
 
 
 class ProfileForm(forms.Form):
-
     picture = forms.FileField(required=False)
     bio = forms.CharField(max_length=420)
 

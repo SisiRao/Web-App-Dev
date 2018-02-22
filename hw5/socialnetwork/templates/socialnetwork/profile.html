@@ -1,59 +1,59 @@
 {% extends "socialnetwork/base-logged-in.html" %}
 
 {% block profile %}
-        <!--profile image-->
-        <div class="profile-img">
-            {% load staticfiles %}
-            {% if profile.picture.name %}
-            <img style="width:250px" src="{% url 'photo' user.username %}">
-            {% else %}
-            <img style="width:250px" src="{% static 'images/blank-profile-picture.png' %}">
-            {% endif %}
-        </div>
-
-
-        <!--user info-->
-        <div class='profile-info'>
-            <ul>
-                <li>Username: </li>
-                <li>{{user.username}}</li>
-            </ul>
-            <ul>
-                <li>First Name: </li>
-                <li>{{user.first_name}}</li>
-            </ul>
-            <ul>
-                <li>Last Name: </li>
-                <li>{{user.last_name}}</li>
-            </ul>
-            <ul>
-                <li>Bio: </li>
-                <li><textarea id="inputBio" name="bio">{{profile.bio}}</textarea></li>
-
-            </ul>
-            <ul>
-                {% if user in follows %}
-                    <form method="post" action="{% url 'unfollow' user.username%}">
-                        <li><input type="submit" value="Unfollow"></li>
-                        {% csrf_token %}
-                    </form>
-
-                {% else %}
-                    <form method="post" action="{% url 'follow' user.username%}">
-                        <li><input type="submit" value="Follow"></li>
-                        {% csrf_token %}
-                    </form>
-                {% endif%}
-            </ul>
-        </div>
-
-
-    {% if form.errors %}
-        <p style="color:red">
-            {% for field in form.visible_fields %}
-                {{field.label_tag}}
-                {% for error in field.errors %}  {{error}} {% endfor %}
-            {% endfor %}
-        </p>
+<!--profile image-->
+<div class="profile-img">
+    {% load staticfiles %}
+    {% if profile.picture.name %}
+    <img style="width:250px" src="{% url 'photo' user.username %}">
+    {% else %}
+    <img style="width:250px" src="{% static 'images/blank-profile-picture.png' %}">
     {% endif %}
+</div>
+
+
+<!--user info-->
+<div class='profile-info'>
+    <ul>
+        <li>Username: </li>
+        <li>{{user.username}}</li>
+    </ul>
+    <ul>
+        <li>First Name: </li>
+        <li>{{user.first_name}}</li>
+    </ul>
+    <ul>
+        <li>Last Name: </li>
+        <li>{{user.last_name}}</li>
+    </ul>
+    <ul>
+        <li>Bio: </li>
+        <li><textarea id="inputBio" name="bio">{{profile.bio}}</textarea></li>
+
+    </ul>
+    <ul>
+        {% if user in follows %}
+        <form method="post" action="{% url 'unfollow' user.username%}">
+            <li><input type="submit" value="Unfollow"></li>
+            {% csrf_token %}
+        </form>
+
+        {% else %}
+        <form method="post" action="{% url 'follow' user.username%}">
+            <li><input type="submit" value="Follow"></li>
+            {% csrf_token %}
+        </form>
+        {% endif%}
+    </ul>
+</div>
+
+
+{% if form.errors %}
+<p style="color:red">
+    {% for field in form.visible_fields %}
+    {{field.label_tag}}
+    {% for error in field.errors %}  {{error}} {% endfor %}
+    {% endfor %}
+</p>
+{% endif %}
 {% endblock %}

@@ -1,26 +1,26 @@
 {% extends "socialnetwork/base.html" %}
 
 {% block user-info %}
-    <form method="post" action="{% url 'login' %}">
-        <li><a >{{ form.username.label_tag }}</a></li>
-        <li><a >{{ form.username }}</a></li>
-        <li><a >{{ form.password.label_tag }}</a></li>
-        <li><a >{{ form.password }}</a></li>
+<form method="post" action="{% url 'login' %}">
+    <li><a >{{ form.username.label_tag }}</a></li>
+    <li><a >{{ form.username }}</a></li>
+    <li><a >{{ form.password.label_tag }}</a></li>
+    <li><a >{{ form.password }}</a></li>
 
-        <li><a><input class="header-btn" type="submit" value="Login" /></a></li>
-        <input type="hidden" name="next" value="{{ next }}" />
-        {% csrf_token %}
-    </form>
-    <form action="{% url 'register' %}" method="get">
-        <li><a><input class="header-btn" type="submit" value="Register"></a></li>
-    </form>
+    <li><a><input class="header-btn" type="submit" value="Login" /></a></li>
+    <input type="hidden" name="next" value="{{ next }}" />
+    {% csrf_token %}
+</form>
+<form action="{% url 'register' %}" method="get">
+    <li><a><input class="header-btn" type="submit" value="Register"></a></li>
+</form>
 
 {% endblock %}
 
-{% block content %} 
-    {% if form.errors %}
-        <p class = "error">
-            Incorrect user name and password.
-        </p>
-    {% endif %}
+{% block content %}
+{% if form.errors %}
+<p class = "error">
+    Incorrect user name and password.
+</p>
+{% endif %}
 {% endblock %}

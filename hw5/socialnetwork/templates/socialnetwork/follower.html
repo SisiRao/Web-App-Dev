@@ -2,33 +2,33 @@
 
 
 {% block follower-stream %}
-	{% for post in posts %}
-        <div class="post" >
-            {% load staticfiles %}
-            <a href="{% url 'profile' post.created_by.username %}">
-                {% if post.created_by.profile.picture %}
-                    <img class="usr-img" src="{% url 'photo' post.created_by.username %}" />
-                {% else %}
-                    <img style="width:250px" src="{% static 'images/blank-profile-picture.png' %}">
-                {% endif %}
-            </a>
-            <p >Post by {{post.created_by.first_name}} {{post.created_by.last_name}}</p>
-            <p>{{post.text}} </p>
-            <div class="post-info">
-                {{post.creation_time}}
-            </div>
+{% for post in posts %}
+<div class="post" >
+    {% load staticfiles %}
+    <a href="{% url 'profile' post.created_by.username %}">
+        {% if post.created_by.profile.picture %}
+        <img class="usr-img" src="{% url 'photo' post.created_by.username %}" />
+        {% else %}
+        <img style="width:250px" src="{% static 'images/blank-profile-picture.png' %}">
+        {% endif %}
+    </a>
+    <p >Post by {{post.created_by.first_name}} {{post.created_by.last_name}}</p>
+    <p>{{post.text}} </p>
+    <div class="post-info">
+        {{post.creation_time}}
+    </div>
 
-            <div class="all-comment">
-                <p>Comment by <a href="{% url 'profile' request.user.username %}">Someone</a> - nice post. --2/6/2018 1:08pm</p>
-            </div>
+    <div class="all-comment">
+        <p>Comment by <a href="{% url 'profile' request.user.username %}">Someone</a> - nice post. --2/6/2018 1:08pm</p>
+    </div>
 
-            <div class="comment">
-                <p>Comment:</p>
-                <textarea rows="2" cols="100" placeholder="Leave a comment here..."></textarea>
-                <input type="submit" value="Submit">
-            </div>
-        </div>
-    {% endfor %}
+    <div class="comment">
+        <p>Comment:</p>
+        <textarea rows="2" cols="100" placeholder="Leave a comment here..."></textarea>
+        <input type="submit" value="Submit">
+    </div>
+</div>
+{% endfor %}
 
 {% endblock %}
 

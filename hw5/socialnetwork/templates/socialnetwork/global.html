@@ -3,49 +3,49 @@
 {% block add-comment %}
 
 
-	<div class="create-post">
-		<p>New Post:</p>
-         <form action="{% url 'post' %}" method="post" >
+<div class="create-post">
+    <p>New Post:</p>
+    <form action="{% url 'post' %}" method="post" >
 
-            <textarea name ='text' placeholder="Write you post here..."></textarea>
-            <input type="submit" value="Submit" >
-             {% csrf_token %}
-        </form>
-    </div>
+        <textarea name ='text' placeholder="Write you post here..."></textarea>
+        <input type="submit" value="Submit" >
+        {% csrf_token %}
+    </form>
+</div>
 
-    <div class="seperator"></div>
+<div class="seperator"></div>
 {% endblock %}
 
 
 {% block global-stream %}
-    <!-- All posts -->
-    {% for post in posts %}
-        <div class="post" >
-            {% load staticfiles %}
-            <a href="{% url 'profile' post.created_by.username %}">
-                {% if post.created_by.profile.picture %}
-                    <img class="usr-img" src="{% url 'photo' post.created_by.username %}" />
-                {% else %}
-                    <img style="width:250px" src="{% static 'images/blank-profile-picture.png' %}">
-                {% endif %}
-            </a>
-            <p >Post by {{post.created_by.first_name}} {{post.created_by.last_name}}</p>
-            <p>{{post.text}} </p>
-            <div class="post-info">
-                {{post.creation_time}}
-            </div>
+<!-- All posts -->
+{% for post in posts %}
+<div class="post" >
+    {% load staticfiles %}
+    <a href="{% url 'profile' post.created_by.username %}">
+        {% if post.created_by.profile.picture %}
+        <img class="usr-img" src="{% url 'photo' post.created_by.username %}" />
+        {% else %}
+        <img style="width:250px" src="{% static 'images/blank-profile-picture.png' %}">
+        {% endif %}
+    </a>
+    <p >Post by {{post.created_by.first_name}} {{post.created_by.last_name}}</p>
+    <p>{{post.text}} </p>
+    <div class="post-info">
+        {{post.creation_time}}
+    </div>
 
-            <div class="all-comment">
-                <p>Comment by <a href="{% url 'profile' request.user.username %}">Someone</a> - nice post. --2/6/2018 1:08pm</p>
-            </div>
+    <div class="all-comment">
+        <p>Comment by <a href="{% url 'profile' request.user.username %}">Someone</a> - nice post. --2/6/2018 1:08pm</p>
+    </div>
 
-            <div class="comment">
-                <p>Comment:</p>
-                <textarea rows="2" cols="100" placeholder="Leave a comment here..."></textarea>
-                <input type="submit" value="Submit">
-            </div>
-        </div>
-    {% endfor %}
+    <div class="comment">
+        <p>Comment:</p>
+        <textarea rows="2" cols="100" placeholder="Leave a comment here..."></textarea>
+        <input type="submit" value="Submit">
+    </div>
+</div>
+{% endfor %}
 
 {% endblock %}
 
