@@ -134,7 +134,6 @@ def get_photo(request, username):
 
     if not curr_profile.picture:
         raise Http404
-    print curr_profile.picture
     return HttpResponse(curr_profile.picture, content_type=curr_profile.content_type)
 
 @login_required
@@ -205,7 +204,6 @@ def getchanges(request,time):
 
 @login_required
 def getchanges_follower(request,time,username):
-    print 'username', username
     curr_user = get_object_or_404(User, username=username)
     curr_profile = get_object_or_404(Profile, user=curr_user)
     follows = curr_profile.following.all()
@@ -223,7 +221,6 @@ def add_comment(request,post_id):
     curr_post = Post.objects.get(id=post_id)
 
     username = request.POST['username']
-    print 'username',username
     curr_user = get_object_or_404(User, username=username)
 
     # Create a new comment
@@ -235,7 +232,6 @@ def add_comment(request,post_id):
 
 @login_required
 def get_comments_changes(request, max_pk, post_id):
-    print post_id
     curr_post = Post.objects.get(id=post_id)
     response_text=[]
     if curr_post:
