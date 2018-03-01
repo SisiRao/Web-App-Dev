@@ -1,0 +1,73 @@
+{% extends "socialnetwork/base-logged-in.html" %}
+
+{% block profile %}
+<form enctype="multipart/form-data" action="{% url 'edit' %}" method="post" >
+
+    <!--profile image-->
+    <div class="profile-img">
+        {% load staticfiles %}
+        {% if profile.picture.name %}
+        <img src="{% url 'photo' user.username %}">
+        {% else %}
+        <img src="{% static 'images/blank-profile-picture.png' %}">
+        {% endif %}
+        <!--upload new image-->
+        <input id ="picture" type="file" name="picture" accept="image/*" />
+    </div>
+
+
+    <!--user info-->
+    <div class='profile-info'>
+        <ul>
+            <li>Username: </li>
+            <li>{{user.username}}</li>
+        </ul>
+        <ul>
+            <li>First Name: </li>
+            <li>{{user.first_name}}</li>
+        </ul>
+        <ul>
+            <li>Last Name: </li>
+            <li>{{user.last_name}}</li>
+        </ul>
+        <ul>
+            <li>Bio: </li>
+            <li><textarea id="inputBio" name="bio">{{profile.bio}}</textarea></li>
+
+        </ul>
+        <ul>
+            <li><input type="submit" value="Update"></li>
+        </ul>
+    </div>
+
+    <p class="follow-header" >Following:</p>
+
+    <div class="profile-info">
+        {% for follow in follows %}
+        <ul>
+            {% load staticfiles %}
+            <li>
+                {% if follow.profile.picture.name %}
+                <a href="{% url 'profile' follow.username %}"><img class="usr-img" src="{% url 'photo' follow.username %}"></a>
+                {% else %}
+                <a href="{% url 'profile' follow.username %}"><img class="usr-img" src="{% static 'images/blank-profile-picture.png' %}"></a>
+                {% endif %}
+            <li>
+            <li>
+                <a href="{% url 'profile' follow.username %}">{{follow.username}}</a>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+    {% csrf_token %}
+</form>
+
+{% if form.errors %}
+<p style="color:red">
+    {% for field in form.visible_fields %}
+    {{field.label_tag}}
+    {% for error in field.errors %}  {{error}} {% endfor %}
+    {% endfor %}
+</p>
+{% endif %}
+{% endblock %}
