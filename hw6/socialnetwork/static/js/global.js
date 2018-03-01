@@ -2,7 +2,7 @@ var max_date = "1970-01-01T00:00+00:00";
 var max_pk = 0;
 
 function getInitTime(){
-    console.log(max_date);
+    // console.log(max_date);
     $.ajax({
         url: "/socialnetwork/get-list-json/"+max_date,
         dataType: "json",
@@ -61,6 +61,7 @@ function updateList(posts){
     max_date = posts[posts.length - 1].fields.creation_time;
     }
 
+    // console.log($('#post-list').children());
     $('#post-list').children().each(function(){
         getComments(this.id);
         // console.log("getcommet for post "+ this.id);
@@ -75,7 +76,7 @@ function getComments(post_id){
 
     if(comments.length)
     {
-        max_pk = parseInt(comments.first().attr("id").replace("comment-",''));
+        max_pk = parseInt(comments.last().attr("id").replace("comment-",''));
         // console.log("max_pk)"+max_pk);
     }
 
@@ -89,9 +90,9 @@ function getComments(post_id){
 
 function updateComments(comments){
     $(comments).each(function() {
-        console.log("this.fields.post: " +this.fields.post);
-        console.log($('#comment-list'+this.fields.post).children().length);
-        $('#comment-list'+this.fields.post).prepend(
+        // console.log("this.fields.post: " +this.fields.post);
+        // console.log($('#comment-list'+this.fields.post).children().length);
+        $('#comment-list'+this.fields.post).append(
                 "<div id=\"comment-"+ this.pk +"\" class=\"comment-text\">\n" +
                 "                <br/>\n" +
                 "                <p>Comment by\n" +

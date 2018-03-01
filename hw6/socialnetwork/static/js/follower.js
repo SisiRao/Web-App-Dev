@@ -76,7 +76,7 @@ function getComments(post_id){
 
     if(comments.length)
     {
-        max_pk = parseInt(comments.first().attr("id").replace("comment-",''));
+        max_pk = parseInt(comments.last().attr("id").replace("comment-",''));
         // console.log("max_pk)"+max_pk);
     }
 
@@ -90,9 +90,9 @@ function getComments(post_id){
 
 function updateComments(comments){
     $(comments).each(function() {
-        console.log("this.fields.post: " +this.fields.post);
-        console.log($('#comment-list'+this.fields.post).children().length);
-        $('#comment-list'+this.fields.post).prepend(
+        // console.log("this.fields.post: " +this.fields.post);
+        // console.log($('#comment-list'+this.fields.post).children().length);
+        $('#comment-list'+this.fields.post).append(
                 "<div id=\"comment-"+ this.pk +"\" class=\"comment-text\">\n" +
                 "                <br/>\n" +
                 "                <p>Comment by\n" +

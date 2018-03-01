@@ -5,7 +5,6 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.utils import timezone
 from django.db import transaction
@@ -236,10 +235,12 @@ def add_comment(request,post_id):
 
 @login_required
 def get_comments_changes(request, max_pk, post_id):
-
+    print post_id
     curr_post = Post.objects.get(id=post_id)
-    comments = Comment.objects.filter(post=curr_post, id__gt=max_pk).distinct().order_by("created_time")
-    response_text = serializers.serialize('json', comments, use_natural_foreign_keys=True)
+    response_text=[]
+    if curr_post:
+        comments = Comment.objects.filter(post=curr_post, id__gt=max_pk).distinct().order_by("created_time")
+        response_text = serializers.serialize('json', comments, use_natural_foreign_keys=True)
     return HttpResponse(response_text, content_type='application/json')
 
 
