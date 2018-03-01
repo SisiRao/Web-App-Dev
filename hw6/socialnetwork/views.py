@@ -29,6 +29,7 @@ def home(request):
     return render(request, 'socialnetwork/global.html', context)
 
 
+@transaction.atomic
 def register(request):
     context = {}
 
@@ -97,7 +98,6 @@ def profile(request, username):
 
 
 @login_required
-@transaction.atomic
 def edit(request):
 
     curr_profile = get_object_or_404(Profile, user=request.user)
@@ -238,18 +238,4 @@ def get_comments_changes(request, max_pk, post_id):
         comments = Comment.objects.filter(post=curr_post, id__gt=max_pk).distinct().order_by("created_time")
         response_text = serializers.serialize('json', comments, use_natural_foreign_keys=True)
     return HttpResponse(response_text, content_type='application/json')
-
-
-Fist_Entry = {
-	'id': 1,
-    'text': "You are being watched. The government has a secret system. A machine.It spies on you every hour of every day.I know because I built it. I designed the machine to detect acts of terror,But it sees everything. Violent crimes involving ordinary people.People like you.Crimes the government considered irrelevant.They wouldn't act, so I decided I would.But I needed a partner.Someone with the skills to intervene.Hunted by the authorities, we work in secret.You'll never find us.But victim or perpetrator, if your number's up,we'll find you. ",
-}
-
-
-Second_Entry = {
-	'id': 2,
-    'text': 'The Three Laws of Robotics: 1. A robot may not injure a human being or, through inaction, allow a human being to come to harm. 2. A robot must obey the orders given it by human beings except where such orders would conflict with the First Law. 3. A robot must protect its own existence as long as such protection does not conflict with the First or Second Laws.',
-}
-
-
 
