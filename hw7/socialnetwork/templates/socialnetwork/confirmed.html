@@ -1,0 +1,12 @@
+{% extends "socialnetwork/base.html" %}
+{% block content %}
+<p>
+Thank you for confirming your email address.
+</p>
+<form action="{% url 'home' %}" method="GET">
+    Please press
+    <button type="submit" >Home</button>
+    to login your account.
+</form>
+
+{% endblock %}
