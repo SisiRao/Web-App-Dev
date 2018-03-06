@@ -33,7 +33,7 @@ function updateList(posts){
         $(posts).each(function() {
         if (this.fields.creation_time!=max_date)
         {
-            var comment_id = "'comment-button-"+this.pk+"-"+this.fields.created_by[0]+"'";
+            var comment_id = "'comment-button-"+this.pk+"-"+$("#username").val()+"'";
 
               $("#post-list").prepend(
             "<div class=\"post\" id=\""+this.pk+"\">"+

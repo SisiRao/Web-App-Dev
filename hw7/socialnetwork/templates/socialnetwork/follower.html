@@ -7,6 +7,8 @@
 <input type="hidden" id = "follower-username" name="username" value="{{request.user.username}}">
 
 <!-- All posts and comments -->
+<input id="username" type="hidden" name="username" value="{{request.user.username}}">
+
 <div id="post-list">
     {% for post in posts %}
     <div class="post" id="{{post.id}}">
