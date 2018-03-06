@@ -32,8 +32,8 @@ function updateList(posts){
         $(posts).each(function() {
         if (this.fields.creation_time!=max_date)
         {
-            var comment_id = "'comment-button-"+this.pk+"-"+$("#username").val()+"'";
-            // console.log("username: " +$("#username").val());
+            var comment_id = "'comment-button-"+this.pk+"-"+$("#follower-username").val()+"'";
+            console.log("username: " +$("#follower-username").val());
               $("#post-list").prepend(
             "<div class=\"post\" id=\""+this.pk+"\">"+
             "    <a class=\"media-heading\" href=\"/socialnetwork/profile/"+ this.fields.created_by[0]+ " \">\n" +
