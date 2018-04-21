@@ -8,7 +8,7 @@ User can make posts and leave a comment!
 User can follow and unfollow other users.
 
 Homepage screenshot
-![alt text](https://github.com/SisiRao/Web-App-Dev/blob/master/homepage.PNG)
+![alt text](https://github.com/SisiRao/Web-App-Dev/blob/master/homepage.png)
 Porfile screenshot
 ![alt text](https://github.com/SisiRao/Web-App-Dev/blob/master/profile.PNG)
 
